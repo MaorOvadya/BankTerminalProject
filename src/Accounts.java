@@ -10,8 +10,12 @@ public class Accounts {
     private String joinDate;
     private String phoneNumber;
     private String email;
-    
-    public Accounts(int accountNumber, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber) {
+    private Operations operations;
+    public Operations getOperations() {
+        return operations;
+    }
+
+    public Accounts(int accountNumber, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber, Operations operations) {
         this.joinDate = joinDate;
         this.accountNumber =  accountNumber;
         this.fullName = fullName;
@@ -20,6 +24,7 @@ public class Accounts {
         this.email = email;
         this.userName = userName;
         this.userPassword = userPassword;
+        this.operations = operations;
     }
 
     public int getAaccountNumber() {
