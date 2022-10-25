@@ -11,8 +11,7 @@ public class Accounts {
     private String phoneNumber;
     private String email;
     
-    public Accounts(int accountId, String fullName, String gender, String userName, String userPassword,String joinDate, BankInformation bankInformation
-    ,String email,String phoneNumber) {
+    public Accounts(int accountId, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber) {
         this.joinDate = joinDate;
         this.accountId =  accountId;
         this.fullName = fullName;
@@ -37,7 +36,6 @@ public class Accounts {
         return gender;
     }
 
-    
     public String getJoinDate() {
         return joinDate;
     }
