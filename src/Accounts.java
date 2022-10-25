@@ -2,7 +2,7 @@
 
 public class Accounts {
     
-    private int accountId;
+    private int accountNumber;
     private String fullName;
     private String gender;
     private String userName;
@@ -11,9 +11,9 @@ public class Accounts {
     private String phoneNumber;
     private String email;
     
-    public Accounts(int accountId, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber) {
+    public Accounts(int accountNumber, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber) {
         this.joinDate = joinDate;
-        this.accountId =  accountId;
+        this.accountNumber =  accountNumber;
         this.fullName = fullName;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
@@ -22,8 +22,8 @@ public class Accounts {
         this.userPassword = userPassword;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public int getAaccountNumber() {
+        return accountNumber;
     }
 
 
@@ -73,12 +73,13 @@ public class Accounts {
     @Override
     public String toString() {
         return
-          "\nJoin Date: " + joinDate
-        + "\nFull Name: " + fullName 
+          "\nJoin date: " + joinDate
+        + "\nAccount number: " +accountNumber
+        + "\nFull name: " + fullName 
         + "\nGender:" + gender
-        + "\nContact:" 
+        + "\nContact information:" 
         + "\nEmail: " + email
-        + "\nPhone Number: " + phoneNumber;
+        + "\nPhone number: " + phoneNumber;
     }
 
     

@@ -5,7 +5,7 @@ public class Bov {
 
         Operations operations = new Operations();
         BankInformation bankInformation = new BankInformation();
-        Accounts accounts = new Accounts(1, "Daiki moto", "Male", "koko", "123123","12/12/2021","daiki@gmail.com","123489343593");
+        Accounts accounts = new Accounts(1, "Jhon doe", "Male", "Jhon", "123123","12/12/2021","daiki@gmail.com","778 432 4354");
         String password, userName;
         char option, option2;
         int amount;
@@ -31,9 +31,9 @@ public class Bov {
                             System.out.println("Thank you for using B.O.V " + accounts.getFullName() + " , Have pleasant day.");
                             System.exit(0);
                     }
-            }   
-                while (true) {
-                clrscr();
+                } 
+                do {
+                    clrscr();
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
                 System.out.println("Welcome to BOV - Bank Of Vancouver");
                 System.out.println("Menu selection" + "\nPlease type single character [A-Z] to select:");
@@ -41,7 +41,7 @@ public class Bov {
                 System.out.println("A: Bank information " + " B: Personal information" + " C: Account operations");
 
                 option = input.next().charAt(0);
-                clrscr();
+                
                 switch (Character.toUpperCase(option)) {
 
                     case 'A':
@@ -61,15 +61,14 @@ public class Bov {
                     case 'C':
                     System.out.println("<===*===*===*===*===*===*===*===*===>");
                     System.out.println("Account Operations: ");
-                    System.out.println("A: Get Balance:" + "B: Make a Deposit:" + " C: Make a Withdraw");
+                    System.out.println("A: Get Balance: " + "B: Make a Deposit:" + " C: Make a Withdraw");
+
                         option2 = input.next().charAt(0);
                         switch (Character.toUpperCase(option2)){
 
                             case 'A':
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
                             System.out.println("Your balance is: " + operations.getBalance());
-                            System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.println("Back to menu type (M): ");
                             break;
 
                             case 'B':
@@ -81,18 +80,16 @@ public class Bov {
                             }catch(Exception e){
                                 System.out.println("Erorr, invaild amount");
                             }
-                            System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.println("Back to menu type (M): ");
                             break;
 
                             case 'C':
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.print("Please enter amount you would like to withdraw: ");
+                            System.out.print("Your balance: " + operations.getBalance() + " Please enter amount you would like to withdraw: ");
                             try{
                                 amount = input.nextInt();
                                 operations.Withdraw(amount);
                             }catch(Exception e){
-                                System.out.println("Cannot withdraw amount, your currently balance: "  + operations.getBalance() + ", Please withdraw different amount");
+                                System.out.println("Cannot withdraw amount, Please withdraw different amount");
                             }
                         }
                     System.out.println("<===*===*===*===*===*===*===*===*===>");
@@ -103,10 +100,10 @@ public class Bov {
                     System.out.println("Invaild key, please try again, press back to menu (M): ");
                     break;
                 }
-                    if (Character.toUpperCase(option) != 'e');
-                    System.out.println("Thank you for using B.O.V " + accounts.getFullName() + " , Have pleasant day.");
-                    System.exit(0);
-            } 
+            }  
+            while(input.next().charAt(0) != 'E');
+            System.out.println("Thank you for using B.O.V " + accounts.getFullName() + " , Have pleasant day.");
+            System.exit(0);
         }
     }
     public static void clrscr(){

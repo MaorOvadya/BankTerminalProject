@@ -48,11 +48,11 @@ public String getTechnicalSupportNumber() {
 @Override
 public String toString() {
     return 
-       "\nBank Name: " + bankName 
-     + "\nBank Code: " + bankCode
-     + "\nStreet Address: " + streetAddress
-     + "\nBank Phone Number: " + bankPhoneNumber
-     + "\nTechnical Support Number " + technicalSupportNumber;
+       "\nBank name: " + bankName 
+     + "\nBank code: " + bankCode
+     + "\nStreet address: " + streetAddress
+     + "\nBank phone number: " + bankPhoneNumber
+     + "\nTechnical support number " + technicalSupportNumber;
 }
 
 
