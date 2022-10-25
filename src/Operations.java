@@ -3,9 +3,9 @@ public class Operations {
     private int balance;
     private int deposit;
     private int withdraw;
-    private int transactions;
+    private int payBill;
     private int previousTransaction;
-
+    private String PayBills;
 
     public Operations(){ // constructor
         this.balance = 0;
@@ -19,15 +19,15 @@ public class Operations {
         return balance;
     }
 
-     public int getTransactions() {
-        return transactions;
+    public int getPayBill() {
+        return payBill;
     }
 
     public String previousTransaction(){
         if(previousTransaction > 0){
             return "You deposit: $" + previousTransaction;
         } else if (previousTransaction < 0) {
-             return "You withdraw: $" + Math.abs(previousTransaction);
+             return "You withdraw from your balance: $" + Math.abs(previousTransaction);
         } else {
             return "There no transactions";
         }
@@ -36,7 +36,6 @@ public class Operations {
     void deposit(int amount) {
         if(amount > 0) {
             balance += amount;
-            transactions ++;
             previousTransaction += amount;
             System.out.println("you deposit amount: $" + amount + ", your currently balance: "  + getBalance());
 
@@ -49,7 +48,6 @@ public class Operations {
         if(amount > 0 && balance > 0){
             if((amount <=balance) && (!(balance <0))) {
                 balance -= amount;
-                transactions ++;
                 previousTransaction= -amount;
                 System.out.println("you withdraw amount: $" + amount + ", your currently balance: "  + getBalance());
             }else{
@@ -60,4 +58,15 @@ public class Operations {
              }
          }
     }
+
+    void payBill(int amount) {
+        if((amount > 0 && balance > 0) && (amount <=balance) && (balance > 0)){
+                balance -= amount;
+               payBill = previousTransaction= -amount;
+                System.out.println("you Pay: $" + amount + ", your currently balance: "  + getBalance());
+            }
+         else if (amount <= 0) { 
+             System.out.println("Can't pay amount less or equal to 0, your currently balance: " + balance); 
+            } 
+    }    
 }

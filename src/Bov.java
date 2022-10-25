@@ -3,11 +3,11 @@ import java.util.*;
 public class Bov {
     public static void main(String[] args) throws Exception {
 
-        Operations operations = new Operations();
+        
         BankInformation bankInformation = new BankInformation();
-        Accounts accounts = new Accounts(1, "Jhon doe", "Male", "Jhon", "123123","12/12/2021","daiki@gmail.com","778 432 4354",new Operations(100));
+        Accounts accounts = new Accounts(1, "Jhon doe", "Male", "jhon", "123123","12/12/2021","daiki@gmail.com","778 432 4354",new Operations(100));
         String password, userName;
-        char option, option2,option3;
+        char option,option2,option3;
         int amount;
 
         try (Scanner input = new Scanner(System.in)) {
@@ -33,17 +33,17 @@ public class Bov {
                             System.exit(0);
                     }
                 } 
-                do {
+                do { // DO-WHILE LOOP
                     clrscr();
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
                 System.out.println("Welcome to BOV - Bank Of Vancouver");
                 System.out.println("Menu selection" + "\nPlease type single character [A-Z] to select:");
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
                 System.out.println("A: Bank information " + " B: Personal information" + " C: Account operations");
+                System.out.println("E: Exit the system");
 
                 option = input.next().charAt(0);
-                
-                switch (Character.toUpperCase(option)) {
+                switch (Character.toUpperCase(option)) { // FIRST SWITCH
 
                     case 'A':
                     System.out.println("<===*===*===*===*===*===*===*===*===>");
@@ -63,14 +63,16 @@ public class Bov {
                     System.out.println("<===*===*===*===*===*===*===*===*===>");
                     System.out.println("Account Operations: ");
                     System.out.println("A: Get Balance: " + "B: Make a Deposit " + " C: Make a Withdraw "
-                    + "\nD: Transactions ");
+                    + "\nD: Last Transaction " + "E: Pay Bills");
 
                         option2 = input.next().charAt(0);
-                        switch (Character.toUpperCase(option2)){
+                        switch (Character.toUpperCase(option2)){ // second switch
 
                             case 'A':
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.println("Your balance is: " + operations.getBalance());
+                            System.out.println("Your balance is: " + accounts.getOperations().getBalance());
+                            System.out.println("<===*===*===*===*===*===*===*===*===>");
+                            System.out.println("Back to menu type (M): ");
                             break;
 
                             case 'B':
@@ -78,55 +80,81 @@ public class Bov {
                             System.out.print("Please enter Amount you would like to deposit: ");
                             try{
                                  amount = input.nextInt();
-                                operations.deposit(amount);
+                                 accounts.getOperations().deposit(amount);
                             }catch(Exception e){
                                 System.out.println("Erorr, invaild amount");
                             }
+                            System.out.println("<===*===*===*===*===*===*===*===*===>");
+                            System.out.println("Back to menu type (M): ");
                             break;
 
                             case 'C':
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            // System.out.print("Your balance: " + operations.getBalance() + " Please enter amount you would like to withdraw: ");
-                            System.out.print("Your balance: " + accounts.getOperations().getBalance() + " Please enter amount you would like to withdraw: ");
+                            System.out.print("Please enter amount you would like to withdraw: ");
                             try{
                                 amount = input.nextInt();
-                                operations.Withdraw(amount);
+                                if(accounts.getOperations().getBalance() == 0){
+                                    System.out.println("Your balance: " + accounts.getOperations().getBalance() + ", No founds to withdraw");
+                                }
+                                accounts.getOperations().Withdraw(amount);
                             }catch(Exception e){
                                 System.out.println("Cannot withdraw amount, Please withdraw different amount");
                             }
-
+                            System.out.println("<===*===*===*===*===*===*===*===*===>");
+                            System.out.println("Back to menu type (M): ");
+                            break;
+                        
                             case 'D':
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.println("You have: " + operations.getTransactions() + " transactions");
+                            System.out.println("Previous transaction: "  +  accounts.getOperations().previousTransaction());
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.println("T: Transactions");
-
-                            
-                            option3= input.next().charAt(0);
-                            switch (option3) {
-
-                            case 'T':
-                           
-                            System.out.println("<===*===*===*===*===*===*===*===*===>");
-                            System.out.println("Previous transaction: "  + operations.previousTransaction());
-                            System.out.println("<===*===*===*===*===*===*===*===*===>");
+                            System.out.println("Back to menu type (M): ");
                             break;
-                            }
-                        }
-                    System.out.println("<===*===*===*===*===*===*===*===*===>");
-                    System.out.println("Back to menu type (M): ");
-                    break;
 
+                            case 'E':
+                            System.out.println("<===*===*===*===*===*===*===*===*===>");
+                            System.out.println("Pay Bills: ");
+                            System.out.println("A: Telus: " + "B: Bell " + " C: Rogers Communications ");
+        
+                                option3 = input.next().charAt(0);
+                                switch (Character.toUpperCase(option3)){ // second switch
+        
+                                    case 'A':
+                                    System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                    System.out.print("Choose amount to pay: ");
+                                    try{
+                                        amount = input.nextInt();
+                                        accounts.getOperations().payBill(amount);;
+                                   }catch(Exception e){
+                                       System.out.println("Erorr, invaild amount");
+                                   }
+                                    System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                    System.out.println("Back to menu type (M): ");
+                                    break;
+                                }
+                        } // END SECOND SWITCH
+
+                        break;
+
+                        case 'E':
+                        System.out.println(accounts.getFullName() + " Thank you for using B.O.V, Have pleasant day.");
+                        System.exit(0);
+                        break;
+
+                        default :
+                        System.out.println("Invaild key, please try again, press back to menu (M): ");
+                        break;
+                    } // END FIRST SWITCH
+
+                } // EXIT DO-WHILE LOOP
+                while(input.next().charAt(0) != 'E');
+                System.out.println(accounts.getFullName() + " Thank you for using B.O.V, Have pleasant day.");
+                System.exit(0); 
                 }
-                    // default :
-                    // System.out.println("Invaild key, please try again, press back to menu (M): ");
-                    // break;
-            }  
-            while(input.next().charAt(0) != 'E');
-            System.out.println(accounts.getFullName() + " Thank you for using B.O.V, Have pleasant day.");
-            System.exit(0);
-        }
-    }
+            }
+    
+
+
     public static void clrscr(){
 		// Clears Screen in java
 		try {
@@ -140,9 +168,3 @@ public class Bov {
 
     
 }
-
-
-               // if (input.next().toUpperCase().charAt(0) != 'e'){
-                //     System.out.println("Thank you for using B.O.V " + accounts.getFullName() + " , have pleasant day.");
-                //     System.exit(0);
-                // }

@@ -11,9 +11,7 @@ public class Accounts {
     private String phoneNumber;
     private String email;
     private Operations operations;
-    public Operations getOperations() {
-        return operations;
-    }
+
 
     public Accounts(int accountNumber, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber, Operations operations) {
         this.joinDate = joinDate;
@@ -25,6 +23,10 @@ public class Accounts {
         this.userName = userName;
         this.userPassword = userPassword;
         this.operations = operations;
+    }
+
+    public Operations getOperations() {
+        return operations;
     }
 
     public int getAaccountNumber() {
