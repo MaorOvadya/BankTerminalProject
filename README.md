@@ -1,10 +1,12 @@
-## Main class - Bank of Vancouver
-* in this class will run the application
-*User interface menu: 1 - View balacnce, 2 - Make a deposit, 3 - Make a withdraw, 4 - View previuse transactions, 5 - Pay a bill, 6 - Bank communication channels,7 - Private accountment, 8 - Support channel. 
-
 ## Classes:
-*Accounts: accountID, userName, userPassword, joinDate
-
+*BOV - Main
+*Accounts
+*BankInformation
+*Creditcards
+*Loan
+*Operations
+*Paybills
+*personalBanker
 
 The workspace contains two folders by default, where:
 
