@@ -10,7 +10,8 @@ public class Bov {
         BankInformation bankInformation = new BankInformation();
 
         // - initialize Accounts class           
-        Accounts accounts = new Accounts(1, "Jhon doe", "Male", "jhon", "123123","12/12/2021","daiki@gmail.com","778 432 4354",new Operations(100));
+        // Accounts accounts = new Accounts(375847, "Jhon doe", "Male", "jhon", "123123","12/12/2021","JhonD@gmail.com","778-432-4354",new Operations(100),new PersonalBanker());
+        Accounts accounts = new Accounts(594763, "Jane colin", "Female", "jane", "123321","9/04/2020","JaneC@gmail.com","778-234-654",new Operations(100),new PersonalBanker("Golan moshe","Golan@BOV.com","778-585-6845","Week days 8AM - 7PM, No Weekends","Personal banking"));
 
         // - initialize variables
         String password, userName;
@@ -47,8 +48,9 @@ public class Bov {
                 System.out.println("Welcome to BOV - Bank Of Vancouver");
                 System.out.println("Menu selection" + "\nPlease type single character [A-Z] to select:");
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
-                System.out.println("A: Bank information " + "\nB: Personal information" + "\nC:Account operations");
-                System.out.println("E: Exit the system");
+                System.out.println("A: Bank information " + "\nB: Personal information" + "\nC:Account operations" 
+                + "\nD: Personal Banker" + "\nE: Exit the system");
+
 
                 option = input.next().charAt(0);
                 switch (Character.toUpperCase(option)) { // FIRST SWITCH
@@ -139,6 +141,7 @@ public class Bov {
                                     System.out.print("Choose amount to pay: ");
                                     try{
                                         amount = input.nextInt();
+                                        accounts.getOperations().payBill(amount);
                                         payBills.Telus();
                                     }catch(Exception e){
                                        System.out.println("Erorr, invaild amount");
@@ -177,6 +180,12 @@ public class Bov {
                                 }
                         } // END SECOND SWITCH
 
+                        break;
+                        case 'D':
+                        System.out.println("<===*===*===*===*===*===*===*===*===>");
+                        System.out.println(accounts.getPersonalBanker());
+                        System.out.println("<===*===*===*===*===*===*===*===*===>");
+                        System.out.println("Back to menu type (M): ");
                         break;
 
                         case 'E':

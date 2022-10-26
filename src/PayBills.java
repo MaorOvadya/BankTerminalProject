@@ -30,8 +30,13 @@ public class PayBills {
         return transferNumber;
     }
 
-void telus(){
+void Telus(){
     System.out.println("Company name: Telus , Bank account: 938574 , Transfer number: 75846895");
 }
-    
+void Bell(){
+    System.out.println("Company name: Bell , Bank account: 938475 , Transfer number: 958395838");
+}
+void RogersCommunications(){
+    System.out.println("Company name: Rogers Communications , Bank account: 756375 , Transfer number: 64963857");
+}
 }

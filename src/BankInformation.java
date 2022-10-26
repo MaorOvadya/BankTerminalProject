@@ -16,6 +16,7 @@ public BankInformation() {
     this.bankPhoneNumber = "(778)-574-5835";
     this.technicalSupportNumber = "(778)-586-8463";
     this.bankEmail = "BankOfVancouver@info.com";
+
 }
 
 public BankInformation(String bankName, int bankCode, String streetAddress, String bankPhoneNumber,String bankEmail) {

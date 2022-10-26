@@ -6,7 +6,7 @@ public class Operations {
     private int withdraw;
     private int payBill;
     private int previousTransaction;
-    private String PayBills;
+    private PayBills payBills;
 
     public Operations(){ // constructor
         this.balance = 0;
@@ -18,6 +18,10 @@ public class Operations {
     
     public int getBalance() {
         return balance;
+    }
+
+    public PayBills getPayBills() {
+        return payBills;
     }
 
     public int getPayBill() {
@@ -38,7 +42,7 @@ public class Operations {
         if(amount > 0) {
             balance += amount;
             previousTransaction += amount;
-            System.out.println("you deposit amount: $" + amount + ", your currently balance: "  + getBalance());
+            System.out.println("you deposit amount: $" + amount + ", your currently update balance: "  + getBalance());
 
         } else {
             System.out.println("Invaild amount ");
@@ -50,12 +54,12 @@ public class Operations {
             if((amount <=balance) && (!(balance <0))) {
                 balance -= amount;
                 previousTransaction= -amount;
-                System.out.println("you withdraw amount: $" + amount + ", your currently balance: "  + getBalance());
+                System.out.println("you withdraw amount: $" + amount + ", your currently update balance: "  + getBalance());
             }else{
             if(amount <= 0){
             System.out.println("Cannot withdraw amount, your currently balance: "  + getBalance() + ", Please withdraw different amount");
             }
-             System.out.println("Can't Withdraw this amount, your current balance is: " + balance); 
+             System.out.println("Can't Withdraw this amount, your currently balance: " + balance); 
              }
          }
     }
@@ -64,7 +68,7 @@ public class Operations {
         if((amount > 0 && balance > 0) && (amount <=balance) && (balance > 0)){
                 balance -= amount;
                payBill = previousTransaction= -amount;
-                System.out.println("you Pay: $" + amount + ", your currently balance: "  + getBalance());
+                System.out.println("you paid: $" + amount + ", your currently update balance: "  + getBalance());
             }
          else if (amount <= 0) { 
              System.out.println("Can't pay amount less or equal to 0, your currently balance: " + balance); 

@@ -11,9 +11,10 @@ public class Accounts {
     private String phoneNumber;
     private String email;
     private Operations operations;
+    private PersonalBanker personalBanker;
 
 
-    public Accounts(int accountNumber, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber, Operations operations) {
+    public Accounts(int accountNumber, String fullName, String gender, String userName, String userPassword,String joinDate,String email,String phoneNumber, Operations operations,PersonalBanker personalBanker) {
         this.joinDate = joinDate;
         this.accountNumber =  accountNumber;
         this.fullName = fullName;
@@ -23,7 +24,14 @@ public class Accounts {
         this.userName = userName;
         this.userPassword = userPassword;
         this.operations = operations;
+        this.personalBanker = personalBanker;
     }
+
+    
+    public PersonalBanker getPersonalBanker() {
+        return personalBanker;
+    }
+
 
     public Operations getOperations() {
         return operations;
@@ -37,7 +45,6 @@ public class Accounts {
     public String getFullName() {
         return fullName;
     }
-
 
     public String getGender() {
         return gender;
@@ -72,10 +79,6 @@ public class Accounts {
         return null;
         }
     }
-
-    // public void getUpdateEmail(){
-    //     if()
-    // }
 
     @Override
     public String toString() {
