@@ -27,11 +27,9 @@ public class Accounts {
         this.personalBanker = personalBanker;
     }
 
-    
     public PersonalBanker getPersonalBanker() {
         return personalBanker;
     }
-
 
     public Operations getOperations() {
         return operations;
@@ -40,7 +38,6 @@ public class Accounts {
     public int getAaccountNumber() {
         return accountNumber;
     }
-
 
     public String getFullName() {
         return fullName;
@@ -55,11 +52,11 @@ public class Accounts {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber.trim().replaceAll(" ", "-");
+        return phoneNumber;
     }
 
     public String getEmail() {
-        return email.trim().replaceAll(" ", "@");
+        return email;
     }
 
     public String getUserName() {

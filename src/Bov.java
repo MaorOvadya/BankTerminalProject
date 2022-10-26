@@ -7,7 +7,7 @@ public class Bov {
         // - initialize Accounts class
         ArrayList<Accounts> accounts = new ArrayList<>();
         accounts.add(new Accounts(5, "Maor ovadya", "Male", "maor", "123123", "4/5/2012", "maor@gmail.com",
-                "778-958-4873", new Operations(7000), new PersonalBanker()));
+                "778 984 0873", new Operations(7000), new PersonalBanker()));
 
         // - initialize CreditCard class
         ArrayList<Creditcards> creditcards = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Bov {
 
 
         // - initialize variables
-        String password, userName,creditCard,loanCredit;
+        String password, userName,creditCard;
         char option,option2,option3,option4,option5,y,x;
         int amount;
 
@@ -207,7 +207,7 @@ public class Bov {
                         clrscr();
                         System.out.println("<===*===*===*===*===*===*===*===*===>");
                         System.out.println("Account Operations: ");
-                        System.out.println("A: Loan " + "\nB: Credit card " + "\nC: cheques ");
+                        System.out.println("A: Loan " + "\nB: Credit card ");
 
                         option4 = input.next().charAt(0);
                         switch (Character.toUpperCase(option4)) { // FOURTH SWITCH
