@@ -3,13 +3,21 @@ import java.util.*;
 public class Bov {
     public static void main(String[] args) throws Exception {
 
-        
+        // - initialize PayBill class    
+        PayBills payBills = new PayBills();       
+ 
+        // - initialize Bank information class           
         BankInformation bankInformation = new BankInformation();
+
+        // - initialize Accounts class           
         Accounts accounts = new Accounts(1, "Jhon doe", "Male", "jhon", "123123","12/12/2021","daiki@gmail.com","778 432 4354",new Operations(100));
+
+        // - initialize variables
         String password, userName;
         char option,option2,option3;
         int amount;
 
+        // -  initialize Login screen
         try (Scanner input = new Scanner(System.in)) {
             while(true) {
                 clrscr();
@@ -33,13 +41,13 @@ public class Bov {
                             System.exit(0);
                     }
                 } 
-                do { // DO-WHILE LOOP
+                do { // DO-WHILE LOOP - menu screen
                     clrscr();
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
                 System.out.println("Welcome to BOV - Bank Of Vancouver");
                 System.out.println("Menu selection" + "\nPlease type single character [A-Z] to select:");
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
-                System.out.println("A: Bank information " + " B: Personal information" + " C: Account operations");
+                System.out.println("A: Bank information " + "\nB: Personal information" + "\nC:Account operations");
                 System.out.println("E: Exit the system");
 
                 option = input.next().charAt(0);
@@ -59,11 +67,14 @@ public class Bov {
                     System.out.println("Back to menu type (M): ");
                     break;
 
+                    
                     case 'C':
+                    clrscr();
                     System.out.println("<===*===*===*===*===*===*===*===*===>");
                     System.out.println("Account Operations: ");
-                    System.out.println("A: Get Balance: " + "B: Make a Deposit " + " C: Make a Withdraw "
-                    + "\nD: Last Transaction " + "E: Pay Bills");
+                    System.out.println("A: Get Balance: " + "\nB: Make a Deposit " + "\nC: Make a Withdraw "
+                    + "\nD: Last Transaction " + "\nE: Pay Bills");
+                  
 
                         option2 = input.next().charAt(0);
                         switch (Character.toUpperCase(option2)){ // second switch
@@ -79,8 +90,9 @@ public class Bov {
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
                             System.out.print("Please enter Amount you would like to deposit: ");
                             try{
-                                 amount = input.nextInt();
-                                 accounts.getOperations().deposit(amount);
+                                amount = input.nextInt();
+                                System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                accounts.getOperations().deposit(amount);
                             }catch(Exception e){
                                 System.out.println("Erorr, invaild amount");
                             }
@@ -91,11 +103,13 @@ public class Bov {
                             case 'C':
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
                             System.out.print("Please enter amount you would like to withdraw: ");
+                            
                             try{
                                 amount = input.nextInt();
                                 if(accounts.getOperations().getBalance() == 0){
                                     System.out.println("Your balance: " + accounts.getOperations().getBalance() + ", No founds to withdraw");
                                 }
+                                System.out.println("<===*===*===*===*===*===*===*===*===>");
                                 accounts.getOperations().Withdraw(amount);
                             }catch(Exception e){
                                 System.out.println("Cannot withdraw amount, Please withdraw different amount");
@@ -112,6 +126,7 @@ public class Bov {
                             break;
 
                             case 'E':
+                            clrscr();
                             System.out.println("<===*===*===*===*===*===*===*===*===>");
                             System.out.println("Pay Bills: ");
                             System.out.println("A: Telus: " + "B: Bell " + " C: Rogers Communications ");
@@ -124,10 +139,38 @@ public class Bov {
                                     System.out.print("Choose amount to pay: ");
                                     try{
                                         amount = input.nextInt();
-                                        accounts.getOperations().payBill(amount);;
-                                   }catch(Exception e){
+                                        payBills.Telus();
+                                    }catch(Exception e){
                                        System.out.println("Erorr, invaild amount");
                                    }
+                                    System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                    System.out.println("Back to menu type (M): ");
+                                    break;
+                                
+                                    case 'B':
+                                    System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                    System.out.print("Choose amount to pay: ");
+                                    try{
+                                        amount = input.nextInt();
+                                        accounts.getOperations().payBill(amount);
+                                        payBills.Bell();
+                                  }catch(Exception e){
+                                    System.out.println("Erorr, invaild amount");
+                                 }
+                                    System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                    System.out.println("Back to menu type (M): ");
+                                    break;
+
+                                    case 'C':
+                                    System.out.println("<===*===*===*===*===*===*===*===*===>");
+                                    System.out.print("Choose amount to pay: ");
+                                    try{
+                                        amount = input.nextInt();
+                                        accounts.getOperations().payBill(amount);
+                                        payBills.RogersCommunications();
+                                  }catch(Exception e){
+                                    System.out.println("Erorr, invaild amount");
+                                 }
                                     System.out.println("<===*===*===*===*===*===*===*===*===>");
                                     System.out.println("Back to menu type (M): ");
                                     break;
