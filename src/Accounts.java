@@ -55,11 +55,11 @@ public class Accounts {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phoneNumber.trim().replaceAll(" ", "-");
     }
 
     public String getEmail() {
-        return email;
+        return email.trim().replaceAll(" ", "@");
     }
 
     public String getUserName() {

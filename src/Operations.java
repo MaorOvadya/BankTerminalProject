@@ -54,7 +54,7 @@ public class Operations {
             if((amount <=balance) && (!(balance <0))) {
                 balance -= amount;
                 previousTransaction= -amount;
-                System.out.println("you withdraw amount: $" + amount + ", your currently update balance: "  + getBalance());
+                System.out.println("you withdraw amount: $" + amount + ", your currently update balance: "  + getBalance() +"\nNotice: You didn't withdraw from ATM, this amount will wait for you in your bank to pickup!, Have pleasant day.");
             }else{
             if(amount <= 0){
             System.out.println("Cannot withdraw amount, your currently balance: "  + getBalance() + ", Please withdraw different amount");
