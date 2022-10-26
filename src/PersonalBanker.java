@@ -11,7 +11,7 @@ public PersonalBanker(){
     this.email = "georgeC@bov.com";
     this.phonWorkNumber = "778-463-5998";
     this.availability = "Week Days 8AM - 8PM, Weekends - Not Active";
-    this.department = "Personal banking";
+    this.department = "Personal banking - online banking";
 }
 
 public PersonalBanker(String fullName, String email, String phonWorkNumber, String availability,String department) {

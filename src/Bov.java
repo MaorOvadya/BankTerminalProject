@@ -3,6 +3,9 @@ import java.util.*;
 public class Bov {
     public static void main(String[] args) throws Exception {
 
+        // - initialize Loan class    
+        Loan loan = new Loan();
+
         // - initialize PayBill class    
         PayBills payBills = new PayBills();       
  
@@ -11,11 +14,11 @@ public class Bov {
 
         // - initialize Accounts class           
         // Accounts accounts = new Accounts(375847, "Jhon doe", "Male", "jhon", "123123","12/12/2021","JhonD@gmail.com","778-432-4354",new Operations(100),new PersonalBanker());
-        Accounts accounts = new Accounts(594763, "Jane colin", "Female", "jane", "123321","9/04/2020","JaneC@gmail.com","778-234-654",new Operations(100),new PersonalBanker("Golan moshe","Golan@BOV.com","778-585-6845","Week days 8AM - 7PM, No Weekends","Personal banking"));
+        Accounts accounts = new Accounts(594763, "Jane colin", "Female", "jane", "123321","9/04/2020","JaneC@gmail.com","778-234-654",new Operations(900),new PersonalBanker("Golan moshe","Golan@BOV.com","778-585-6845","Week days 8AM - 7PM, No Weekends","Personal banking"));
 
         // - initialize variables
         String password, userName;
-        char option,option2,option3;
+        char option,option2,option3,option4;
         int amount;
 
         // -  initialize Login screen
@@ -48,8 +51,8 @@ public class Bov {
                 System.out.println("Welcome to BOV - Bank Of Vancouver");
                 System.out.println("Menu selection" + "\nPlease type single character [A-Z] to select:");
                 System.out.println("<===*===*===*===*===*===*===*===*===>");
-                System.out.println("A: Bank information " + "\nB: Personal information" + "\nC:Account operations" 
-                + "\nD: Personal Banker" + "\nE: Exit the system");
+                System.out.println("A: Bank information " + "\nB: Personal information" + "\nC: Account operations" 
+                + "\nD: Personal Banker" + "\nE: Request"+ "\nQ: Exit the system");
 
 
                 option = input.next().charAt(0);
@@ -181,6 +184,7 @@ public class Bov {
                         } // END SECOND SWITCH
 
                         break;
+
                         case 'D':
                         System.out.println("<===*===*===*===*===*===*===*===*===>");
                         System.out.println(accounts.getPersonalBanker());
@@ -189,6 +193,44 @@ public class Bov {
                         break;
 
                         case 'E':
+                        clrscr();
+                        System.out.println("<===*===*===*===*===*===*===*===*===>");
+                        System.out.println("Account Operations: ");
+                        System.out.println("A: Loan " + "\nB: Credit card " + "\nC: cheques ");
+
+                        option4 = input.next().charAt(0);
+                        switch (Character.toUpperCase(option4)){
+
+                        case 'A':
+                        System.out.println("<===*===*===*===*===*===*===*===*===>");
+                        System.out.println("Loan is for 24 months ");
+                        System.out.println("Choose the requested amount: ");
+                        try{
+                            amount = input.nextInt();
+                            if (amount <= 150000 && amount >=5000) {
+                                loan.interestRate(amount); 
+                                System.out.println("To confirm request type [Y], to cancel request type [N]: ");  
+                                if(input.next().toUpperCase().charAt(0) != ('N')) {
+                                    System.out.println("You confirm, the transaction. the amount will transfer to your account in 48 hours.");
+                                } else if (input.next().toUpperCase().charAt(0) != ('Y')){
+                                    System.out.println("You cancel the request, to make new request start the process again");
+                                }
+                                System.out.println("Back to menu type (M): ");
+                            } else if (amount <=0 && amount < 5000){
+                                System.out.println("We sorry, B.O.V can't Loan amount less $5000 ");
+                            } else {
+                                System.out.println("Requested amount is more then $150,000. Please contact your personal banker");
+                            }
+                      }catch(Exception e){
+                        System.out.println("If you encounter a problem, contact your personal banker - " + accounts.getPersonalBanker().getFullName() + ", " + accounts.getPersonalBanker().getPhonWorkNumber());
+                    }
+                        System.out.println("<===*===*===*===*===*===*===*===*===>");
+                        System.out.println("Back to menu type (M): ");
+                        break;
+                }
+                        break;
+
+                        case 'Q':
                         System.out.println(accounts.getFullName() + " Thank you for using B.O.V, Have pleasant day.");
                         System.exit(0);
                         break;
@@ -199,7 +241,7 @@ public class Bov {
                     } // END FIRST SWITCH
 
                 } // EXIT DO-WHILE LOOP
-                while(input.next().charAt(0) != 'E');
+                while(input.next().charAt(0) != 'Q');
                 System.out.println(accounts.getFullName() + " Thank you for using B.O.V, Have pleasant day.");
                 System.exit(0); 
                 }
