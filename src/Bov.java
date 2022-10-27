@@ -216,6 +216,7 @@ public class Bov {
                             clrscr();
                                 System.out.println("<===*===*===*===*===*===*===*===*===>");
                                 System.out.println("Loan is for 24 months ");
+                                System.out.println("you can request Upon $150,000 ");
                                 System.out.println("Choose the requested amount: ");
                                 try {
                                     amount = input.nextInt();
